@@ -34,7 +34,7 @@ export default function Contact() {
 ${formData.message}
 
 ---
-Via Site Web Extra Trading
+      Via Site Web MauriFence
     `.trim();
 
     // Encodage pour URL

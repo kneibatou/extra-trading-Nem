@@ -43,13 +43,12 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3">
             <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
-              <span className="text-secondary text-2xl font-bold">ET</span>
+              <span className="text-secondary text-2xl font-bold">MF</span>
             </div>
             <div className="flex flex-col">
               <span className="text-primary font-bold text-xl leading-tight">
-                Extra Trading
+                MauriFence
               </span>
-              <span className="text-gray-600 text-xs">SARL</span>
             </div>
           </Link>
 
