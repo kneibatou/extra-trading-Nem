@@ -161,7 +161,7 @@ export default function Footer() {
               © {currentYear} Extra Trading-sarl. Tous droits réservés.
             </div>
             <div className="flex items-center space-x-4 text-sm text-gray-300">
-              <span>Made with ❤️ in Mauritania 🇲🇷</span>
+              {/* <span>Made with ❤️ in Mauritania 🇲🇷</span> */}
             </div>
           </div>
         </div>
