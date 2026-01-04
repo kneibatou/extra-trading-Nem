@@ -2,6 +2,7 @@ import Header from '@/components/Header'
 import Hero from '@/components/Hero'
 import Features from '@/components/Features'
 import Packs from '@/components/Packs'
+import Gallery from '@/components/Gallery'
 import Testimonials from '@/components/Testimonials'
 import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
@@ -13,6 +14,7 @@ export default function Home() {
       <Hero />
       <Features />
       <Packs />
+      <Gallery />
       <Testimonials />
       <Contact />
       <Footer />

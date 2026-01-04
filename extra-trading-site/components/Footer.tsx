@@ -115,6 +115,7 @@ export default function Footer() {
                 { name: 'Accueil', href: '#accueil' },
                 { name: 'Produit', href: '#produit' },
                 { name: 'Nos Packs', href: '#packs' },
+                { name: 'Réalisations', href: '#realisations' },
                 { name: 'Témoignages', href: '#temoignages' },
                 { name: 'Contact', href: '#contact' },
               ].map((link) => (
