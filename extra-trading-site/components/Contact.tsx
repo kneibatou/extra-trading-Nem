@@ -203,10 +203,10 @@ ${formData.message}
                   <div>
                     <div className="font-semibold mb-1">Email</div>
                     <a
-                      href="mailto:extratrading@gmail.com"
+                      href="mailto:contact@maurifence.com"
                       className="text-white/90 hover:text-secondary transition-colors"
                     >
-                      extratrading@gmail.com
+                      contact@maurifence.com
                     </a>
                   </div>
                 </div>

@@ -20,9 +20,9 @@ export default function Hero() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Contenu texte */}
           <div className="text-white animate-slide-up">
-            <div className="inline-block bg-secondary/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
-              <span className="text-secondary font-semibold">
-                🔒 Sécurité 24/7
+            <div className="inline-block bg-secondary/20 backdrop-blur-sm px-5 py-2.5 rounded-full mb-6 border border-secondary/30">
+              <span className="text-secondary font-semibold text-sm tracking-wide">
+                🔒 SÉCURITÉ 24/7
               </span>
             </div>
             
@@ -57,34 +57,36 @@ export default function Hero() {
             </div>
 
             {/* Points clés */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-              <div className="flex items-center space-x-3">
-                <div className="w-12 h-12 bg-secondary/20 backdrop-blur-sm rounded-lg flex items-center justify-center">
-                  <span className="text-2xl">⚡</span>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-6">
+              <div className="flex items-center space-x-3 bg-white/5 backdrop-blur-sm rounded-xl p-3 lg:p-4 border border-white/10 hover:bg-white/10 transition-all duration-300">
+                <div className="w-12 h-12 lg:w-14 lg:h-14 flex-shrink-0 bg-gradient-to-br from-secondary to-secondary-dark rounded-xl flex items-center justify-center shadow-lg">
+                  <span className="text-2xl lg:text-3xl">⚡</span>
                 </div>
-                <div>
-                  <div className="font-bold text-lg">12 000 V</div>
-                  <div className="text-sm text-gray-300">Puissance max</div>
-                </div>
-              </div>
-
-              <div className="flex items-center space-x-3">
-                <div className="w-12 h-12 bg-secondary/20 backdrop-blur-sm rounded-lg flex items-center justify-center">
-                  <span className="text-2xl">📱</span>
-                </div>
-                <div>
-                  <div className="font-bold text-lg">Contrôle</div>
-                  <div className="text-sm text-gray-300">App mobile</div>
+                <div className="min-w-0">
+                  <div className="font-bold text-base lg:text-lg text-secondary">12 000 V</div>
+                  <div className="text-xs lg:text-sm text-gray-300">Puissance max</div>
                 </div>
               </div>
 
-              <div className="flex items-center space-x-3">
-                <div className="w-12 h-12 bg-secondary/20 backdrop-blur-sm rounded-lg flex items-center justify-center">
-                  <span className="text-2xl">🔋</span>
+              <div className="flex items-center space-x-3 bg-white/5 backdrop-blur-sm rounded-xl p-3 lg:p-4 border border-white/10 hover:bg-white/10 transition-all duration-300">
+                <div className="w-12 h-12 lg:w-14 lg:h-14 flex-shrink-0 bg-gradient-to-br from-secondary to-secondary-dark rounded-xl flex items-center justify-center shadow-lg">
+                  <span className="text-2xl lg:text-3xl">📱</span>
                 </div>
-                <div>
-                  <div className="font-bold text-lg">3 modes</div>
-                  <div className="text-sm text-gray-300">Secteur/Batterie/Solaire</div>
+                <div className="min-w-0">
+                  <div className="font-bold text-base lg:text-lg text-secondary">Contrôle</div>
+                  <div className="text-xs lg:text-sm text-gray-300">App mobile</div>
+                </div>
+              </div>
+
+              <div className="flex items-center space-x-3 bg-white/5 backdrop-blur-sm rounded-xl p-3 lg:p-4 border border-white/10 hover:bg-white/10 transition-all duration-300">
+                <div className="w-12 h-12 lg:w-14 lg:h-14 flex-shrink-0 bg-gradient-to-br from-secondary to-secondary-dark rounded-xl flex items-center justify-center shadow-lg">
+                  <span className="text-2xl lg:text-3xl">🔋</span>
+                </div>
+                <div className="min-w-0 flex-1">
+                  <div className="font-bold text-base lg:text-lg text-secondary">3 modes</div>
+                  <div className="text-xs lg:text-sm text-gray-300 leading-tight">
+                    Secteur / Batterie / Solaire
+                  </div>
                 </div>
               </div>
             </div>
@@ -92,12 +94,18 @@ export default function Hero() {
 
           {/* Image/Illustration */}
           <div className="relative animate-fade-in">
-            <div className="relative z-10 bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
-              <div className="aspect-square bg-gradient-to-br from-secondary/20 to-primary-dark/20 rounded-xl flex items-center justify-center">
-                <div className="text-center">
-                  <div className="w-32 h-32 mx-auto mb-4 bg-secondary rounded-full flex items-center justify-center">
+            <div className="relative z-10 bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-secondary/30 shadow-2xl">
+              <div className="aspect-square bg-gradient-to-br from-secondary/30 to-primary/20 rounded-2xl flex items-center justify-center relative overflow-hidden">
+                {/* Pattern de fond */}
+                <div className="absolute inset-0 opacity-10">
+                  <div className="absolute top-1/4 right-1/4 w-40 h-40 bg-secondary rounded-full blur-2xl"></div>
+                  <div className="absolute bottom-1/4 left-1/4 w-40 h-40 bg-white rounded-full blur-2xl"></div>
+                </div>
+
+                <div className="text-center relative z-10">
+                  <div className="w-36 h-36 mx-auto mb-6 bg-gradient-to-br from-secondary to-secondary-dark rounded-full flex items-center justify-center shadow-2xl border-4 border-white/20">
                     <svg
-                      className="w-16 h-16 text-white"
+                      className="w-20 h-20 text-white"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -110,22 +118,22 @@ export default function Hero() {
                       />
                     </svg>
                   </div>
-                  <div className="text-white text-lg font-semibold mb-2">
+                  <div className="text-white text-xl font-bold mb-2">
                     Protection Maximale
                   </div>
-                  <div className="text-gray-300 text-sm">
+                  <div className="text-secondary text-sm font-semibold">
                     Technologie TH-Steward WF
                   </div>
                 </div>
               </div>
 
               {/* Badges flottants */}
-              <div className="absolute -top-4 -right-4 bg-green-500 text-white px-4 py-2 rounded-full shadow-lg animate-pulse-slow">
-                <span className="font-bold">✓ Garantie 12 mois</span>
+              <div className="absolute -top-4 -right-4 bg-green-500 text-white px-5 py-3 rounded-2xl shadow-2xl animate-pulse-slow border-2 border-white/30">
+                <span className="font-bold text-sm">✓ Garantie 12 mois</span>
               </div>
-              
-              <div className="absolute -bottom-4 -left-4 bg-secondary text-white px-4 py-2 rounded-full shadow-lg">
-                <span className="font-bold">🎓 Formation incluse</span>
+
+              <div className="absolute -bottom-4 -left-4 bg-gradient-to-r from-secondary to-secondary-dark text-primary px-5 py-3 rounded-2xl shadow-2xl border-2 border-white/30">
+                <span className="font-bold text-sm">🎓 Formation incluse</span>
               </div>
             </div>
           </div>

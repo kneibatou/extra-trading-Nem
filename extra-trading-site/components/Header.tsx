@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -41,13 +42,23 @@ export default function Header() {
       <div className="container">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-3">
-            <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
-              <span className="text-secondary text-2xl font-bold">MF</span>
+          <Link href="/" className="flex items-center space-x-3 group">
+            <div className="relative w-16 h-16 bg-white rounded-xl shadow-lg p-2 transition-all duration-300 group-hover:scale-110 group-hover:shadow-xl border-2 border-secondary/20">
+              <Image
+                src="/images/logo-maurifence.jpeg"
+                alt="MauriFence Security Solution"
+                width={64}
+                height={64}
+                className="object-contain w-full h-full"
+                priority
+              />
             </div>
             <div className="flex flex-col">
               <span className="text-primary font-bold text-xl leading-tight">
                 MauriFence
+              </span>
+              <span className="text-secondary text-xs font-semibold uppercase tracking-wide">
+                Security Solution
               </span>
             </div>
           </Link>

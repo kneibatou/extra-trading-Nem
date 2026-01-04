@@ -7,10 +7,10 @@
 
 @layer base {
   :root {
-    --primary: 30 58 95;
-    --primary-dark: 21 42 69;
-    --secondary: 245 158 11;
-    --secondary-dark: 217 119 6;
+    --primary: 26 26 26;
+    --primary-dark: 10 10 10;
+    --secondary: 253 185 19;
+    --secondary-dark: 229 165 12;
   }
 
   * {
@@ -73,7 +73,11 @@
 
   /* Gradients */
   .gradient-bg {
-    background: linear-gradient(135deg, rgb(30 58 95) 0%, rgb(45 90 143) 100%);
+    background: linear-gradient(135deg, rgb(26 26 26) 0%, rgb(45 45 45) 100%);
+  }
+
+  .gradient-gold {
+    background: linear-gradient(135deg, rgb(253 185 19) 0%, rgb(229 165 12) 100%);
   }
 
   /* WhatsApp Button */
