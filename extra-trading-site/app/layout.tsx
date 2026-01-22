@@ -1,9 +1,10 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Cairo } from 'next/font/google'
 import './globals.css'
 import { LanguageProvider } from '@/lib/LanguageContext'
 
 const inter = Inter({ subsets: ['latin'] })
+const cairo = Cairo({ subsets: ['arabic'] })
 
 export const metadata: Metadata = {
   title: 'MauriFence | Système de Clôture Électrique Intelligente',
@@ -25,7 +26,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr" dir="ltr">
-      <body className={inter.className}>
+      <body className={`${inter.className} ${cairo.className}`} style={{ fontFamily: 'var(--font-cairo), var(--font-inter)' }}>
         <LanguageProvider>
           {children}
         </LanguageProvider>
