@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useLanguage } from '@/lib/LanguageContext';
+import { NumberDisplay } from './NumberDisplay';
 
 export default function Testimonials() {
   const { t } = useLanguage();
@@ -63,7 +64,7 @@ export default function Testimonials() {
               className="bg-white rounded-xl shadow-lg p-6 text-center transform hover:scale-105 transition-transform"
             >
               <div className="text-3xl md:text-4xl font-bold text-secondary mb-2">
-                {stat.number}
+                <NumberDisplay>{stat.number}</NumberDisplay>
               </div>
               <div className="text-gray-600 font-medium">{stat.label}</div>
             </div>

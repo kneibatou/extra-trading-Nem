@@ -62,6 +62,27 @@
     direction: rtl;
   }
 
+  /* Force la direction LTR pour les nombres */
+  [dir='rtl'] span,
+  [dir='rtl'] div,
+  [dir='rtl'] p,
+  [dir='rtl'] li,
+  [dir='rtl'] h1,
+  [dir='rtl'] h2,
+  [dir='rtl'] h3,
+  [dir='rtl'] h4,
+  [dir='rtl'] h5,
+  [dir='rtl'] h6 {
+    unicode-bidi: plaintext;
+  }
+
+  /* Classe spéciale pour les nombres */
+  .ltr-number {
+    direction: ltr;
+    unicode-bidi: embed;
+    display: inline-block;
+  }
+
   [dir='rtl'] .space-x-2 > * + * {
     margin-left: 0;
     margin-right: 0.5rem;

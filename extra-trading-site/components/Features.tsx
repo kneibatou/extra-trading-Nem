@@ -1,6 +1,7 @@
 'use client';
 
 import { useLanguage } from '@/lib/LanguageContext';
+import { NumberDisplay } from './NumberDisplay';
 
 export default function Features() {
   const { t } = useLanguage();
@@ -137,11 +138,11 @@ export default function Features() {
                 
                 <div className="grid grid-cols-2 gap-4">
                   <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
-                    <div className="text-3xl font-bold text-secondary">110</div>
+                    <div className="text-3xl font-bold text-secondary"><NumberDisplay>110</NumberDisplay></div>
                     <div className="text-sm text-gray-200">{t.features.sirenDb}</div>
                   </div>
                   <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
-                    <div className="text-3xl font-bold text-secondary">24/7</div>
+                    <div className="text-3xl font-bold text-secondary"><NumberDisplay>24/7</NumberDisplay></div>
                     <div className="text-sm text-gray-200">{t.features.surveillance}</div>
                   </div>
                 </div>
