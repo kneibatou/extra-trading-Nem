@@ -1,75 +1,44 @@
 'use client';
 
+import { useLanguage } from '@/lib/LanguageContext';
+
 export default function Packs() {
+  const { t } = useLanguage();
+
   const packs = [
     {
-      name: 'Pack Résidentiel',
+      name: t.packs.residential.name,
       icon: '🏠',
-      description: 'Idéal pour villas et résidences privées',
-      features: [
-        'Installation esthétique et discrète',
-        'Système jusqu\'à 200m de clôture',
-        'Contrôle via application mobile',
-        'Écran LCD de monitoring',
-        'Alimentation secteur + batterie',
-        'Formation complète',
-        'Garantie 12 mois',
-      ],
-      ideal: ['Villas', 'Maisons familiales', 'Résidences privées'],
+      description: t.packs.residential.description,
+      features: t.packs.residential.features,
+      ideal: t.packs.residential.ideal,
       color: 'from-blue-500 to-blue-700',
       popular: false,
     },
     {
-      name: 'Pack Entreprise',
+      name: t.packs.enterprise.name,
       icon: '🏭',
-      description: 'Solution complète pour sites industriels',
-      features: [
-        'Grande clôture jusqu\'à 500m',
-        'Système d\'alarme connecté',
-        'Sirène 110 dB professionnelle',
-        'Contrôle multi-utilisateurs',
-        'Alimentation triple (secteur/batterie/solaire)',
-        'Support technique prioritaire',
-        'Installation + formation équipe',
-        'Garantie 12 mois étendue',
-      ],
-      ideal: ['Dépôts', 'Usines', 'Entrepôts', 'Zones logistiques'],
+      description: t.packs.enterprise.description,
+      features: t.packs.enterprise.features,
+      ideal: t.packs.enterprise.ideal,
       color: 'from-secondary to-secondary-dark',
       popular: true,
     },
     {
-      name: 'Pack Solaire',
+      name: t.packs.solar.name,
       icon: '☀️',
-      description: 'Autonome et écologique',
-      features: [
-        'Fonctionnement 100% solaire',
-        'Panneaux solaires premium',
-        'Batteries haute capacité',
-        'Idéal zones sans électricité',
-        'Système autonome fiable',
-        'Écran LCD de monitoring',
-        'Installation complète',
-        'Garantie 12 mois',
-      ],
-      ideal: ['Fermes', 'Ranchs', 'Zones rurales', 'Sites isolés'],
+      description: t.packs.solar.description,
+      features: t.packs.solar.features,
+      ideal: t.packs.solar.ideal,
       color: 'from-green-500 to-green-700',
       popular: false,
     },
     {
-      name: 'Pack Institutionnel',
+      name: t.packs.institutional.name,
       icon: '🏫',
-      description: 'Sécurité renforcée 24/7',
-      features: [
-        'Système haute sécurité',
-        'Surveillance continue',
-        'Intégration système d\'alarme',
-        'Contrôle centralisé',
-        'Alimentation sécurisée',
-        'Maintenance prioritaire',
-        'Formation personnel sécurité',
-        'Garantie 12 mois + support',
-      ],
-      ideal: ['Écoles', 'Hôpitaux', 'Hôtels', 'Administrations', 'ONG'],
+      description: t.packs.institutional.description,
+      features: t.packs.institutional.features,
+      ideal: t.packs.institutional.ideal,
       color: 'from-purple-500 to-purple-700',
       popular: false,
     },
@@ -87,9 +56,9 @@ export default function Packs() {
       <div className="container">
         {/* En-tête */}
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="section-title">Nos Packs Sur Mesure</h2>
+          <h2 className="section-title">{t.packs.title}</h2>
           <p className="section-subtitle">
-            Choisissez la solution adaptée à vos besoins de sécurité
+            {t.packs.subtitle}
           </p>
         </div>
 
@@ -105,7 +74,7 @@ export default function Packs() {
               {pack.popular && (
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
                   <div className="bg-red-500 text-white px-4 py-1 rounded-full text-sm font-bold shadow-lg">
-                    ⭐ Plus Populaire
+                    {t.packs.mostPopular}
                   </div>
                 </div>
               )}
@@ -144,7 +113,7 @@ export default function Packs() {
 
                 {/* Idéal pour */}
                 <div className="bg-gray-50 -mx-6 px-6 py-4 mb-6 rounded-lg">
-                  <div className="text-xs font-semibold text-gray-500 mb-2">IDÉAL POUR :</div>
+                  <div className="text-xs font-semibold text-gray-500 mb-2">{t.packs.idealFor}</div>
                   <div className="flex flex-wrap gap-2">
                     {pack.ideal.map((item, idx) => (
                       <span
@@ -162,7 +131,7 @@ export default function Packs() {
                   onClick={handleContactClick}
                   className="btn btn-primary w-full group"
                 >
-                  Demander un Devis
+                  {t.packs.getQuote}
                   <span className="inline-block ml-2 transition-transform group-hover:translate-x-2">
                     →
                   </span>
@@ -175,16 +144,14 @@ export default function Packs() {
         {/* Section informations */}
         <div className="mt-16 bg-gradient-to-r from-primary to-primary-light rounded-2xl p-8 md:p-12 text-white text-center">
           <h3 className="text-3xl font-bold mb-4">
-            Besoin d'une Solution Personnalisée ?
+            {t.packs.customSolution}
           </h3>
           <p className="text-xl text-gray-200 mb-8 max-w-3xl mx-auto">
-            Chaque projet est unique. Contactez-nous pour une étude sur mesure adaptée 
-            à vos besoins spécifiques de sécurité.
+            {t.packs.customSolutionDesc}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button onClick={handleContactClick} className="btn bg-secondary hover:bg-secondary-dark">
-              <span className="mr-2">💬</span>
-              Discuter de Mon Projet
+              {t.packs.discussProject}
             </button>
             <a href="tel:+22246147263" className="btn bg-white text-primary hover:bg-gray-100">
               <span className="mr-2">📞</span>

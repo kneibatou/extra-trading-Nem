@@ -2,66 +2,70 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import { useLanguage } from '@/lib/LanguageContext';
 
 export default function Gallery() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const { t } = useLanguage();
+
+  const categoryKeys = ['residential', 'residential', 'installation', 'technical', 'residential', 'hospitality', 'commercial', 'residential'] as const;
 
   const projects = [
     {
       id: 1,
       image: '/images/IMG_9809.jpg',
-      title: 'Villa Résidentielle',
-      description: 'Installation complète avec système de clôture électrique',
-      category: 'Résidentiel',
+      title: t.gallery.projects[0].title,
+      description: t.gallery.projects[0].description,
+      category: t.gallery.categories[categoryKeys[0]],
     },
     {
       id: 2,
       image: '/images/IMG_9810.jpg',
-      title: 'Maison Moderne',
-      description: 'Sécurisation périmétrique avec contrôle intelligent',
-      category: 'Résidentiel',
+      title: t.gallery.projects[1].title,
+      description: t.gallery.projects[1].description,
+      category: t.gallery.categories[categoryKeys[1]],
     },
     {
       id: 3,
       image: '/images/IMG_9811.jpg',
-      title: 'Installation Technique',
-      description: 'Mise en place par nos techniciens certifiés',
-      category: 'Installation',
+      title: t.gallery.projects[2].title,
+      description: t.gallery.projects[2].description,
+      category: t.gallery.categories[categoryKeys[2]],
     },
     {
       id: 4,
       image: '/images/IMG_9814.jpg',
-      title: 'Système de Sécurité',
-      description: 'Fils électriques haute tension avec signalisation',
-      category: 'Technique',
+      title: t.gallery.projects[3].title,
+      description: t.gallery.projects[3].description,
+      category: t.gallery.categories[categoryKeys[3]],
     },
     {
       id: 5,
       image: '/images/IMG_9815.jpg',
-      title: 'Installation Murale',
-      description: 'Clôture électrique sur mur périmétrique',
-      category: 'Résidentiel',
+      title: t.gallery.projects[4].title,
+      description: t.gallery.projects[4].description,
+      category: t.gallery.categories[categoryKeys[4]],
     },
     {
       id: 6,
       image: '/images/IMG_9816.jpg',
-      title: 'Hôtel Sécurisé',
-      description: 'Installation professionnelle pour établissement hôtelier',
-      category: 'Hôtellerie',
+      title: t.gallery.projects[5].title,
+      description: t.gallery.projects[5].description,
+      category: t.gallery.categories[categoryKeys[5]],
     },
     {
       id: 7,
       image: '/images/IMG_9806.jpg',
-      title: 'Immeuble Commercial',
-      description: 'Sécurisation de bâtiment professionnel',
-      category: 'Commercial',
+      title: t.gallery.projects[6].title,
+      description: t.gallery.projects[6].description,
+      category: t.gallery.categories[categoryKeys[6]],
     },
     {
       id: 8,
       image: '/images/IMG_9817.jpg',
-      title: 'Clôture Périmétrique',
-      description: 'Installation sur mur avec grillage électrifié',
-      category: 'Résidentiel',
+      title: t.gallery.projects[7].title,
+      description: t.gallery.projects[7].description,
+      category: t.gallery.categories[categoryKeys[7]],
     },
   ];
 
@@ -72,16 +76,14 @@ export default function Gallery() {
         <div className="text-center mb-16">
           <div className="inline-block bg-secondary/10 backdrop-blur-sm px-5 py-2.5 rounded-full mb-6 border border-secondary/30">
             <span className="text-secondary font-semibold text-sm tracking-wide">
-              NOS RÉALISATIONS
+              {t.gallery.badge}
             </span>
           </div>
           <h2 className="section-title">
-            Projets <span className="text-secondary">Réalisés</span>
+            {t.gallery.title} <span className="text-secondary">{t.gallery.titleHighlight}</span>
           </h2>
           <p className="section-subtitle">
-            Découvrez quelques-unes de nos installations de systèmes de clôture électrique
-            à travers la Mauritanie. Chaque projet reflète notre engagement envers
-            la qualité et la sécurité.
+            {t.gallery.subtitle}
           </p>
         </div>
 
@@ -143,10 +145,10 @@ export default function Gallery() {
         <div className="text-center mt-16">
           <div className="inline-block bg-white rounded-2xl shadow-xl p-8 border-2 border-secondary/20">
             <h3 className="text-2xl font-bold text-primary mb-3">
-              Votre Projet de Sécurité
+              {t.gallery.yourProject}
             </h3>
             <p className="text-gray-600 mb-6 max-w-md">
-              Contactez-nous pour discuter de votre projet et obtenir un devis personnalisé
+              {t.gallery.yourProjectDesc}
             </p>
             <a
               href="#contact"
@@ -159,7 +161,7 @@ export default function Gallery() {
               }}
               className="btn btn-primary"
             >
-              Demander un Devis Gratuit
+              {t.gallery.getQuote}
             </a>
           </div>
         </div>
@@ -174,7 +176,7 @@ export default function Gallery() {
           <button
             onClick={() => setSelectedImage(null)}
             className="absolute top-6 right-6 text-white hover:text-secondary transition-colors"
-            aria-label="Fermer"
+            aria-label={t.gallery.close}
           >
             <svg
               className="w-10 h-10"

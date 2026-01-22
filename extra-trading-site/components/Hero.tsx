@@ -1,6 +1,10 @@
 'use client';
 
+import { useLanguage } from '@/lib/LanguageContext';
+
 export default function Hero() {
+  const { t } = useLanguage();
+
   const handleContactClick = () => {
     const contactSection = document.querySelector('#contact');
     if (contactSection) {
@@ -22,18 +26,17 @@ export default function Hero() {
           <div className="text-white animate-slide-up">
             <div className="inline-block bg-secondary/20 backdrop-blur-sm px-5 py-2.5 rounded-full mb-6 border border-secondary/30">
               <span className="text-secondary font-semibold text-sm tracking-wide">
-                🔒 SÉCURITÉ 24/7
+                {t.hero.badge}
               </span>
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              Système de Clôture
-              <span className="block text-secondary">Électrique Intelligente</span>
+              {t.hero.title}
+              <span className="block text-secondary">{t.hero.titleHighlight}</span>
             </h1>
             
             <p className="text-xl md:text-2xl text-gray-200 mb-8 leading-relaxed">
-              Sécurisez efficacement vos locaux avec une technologie de pointe. 
-              Contrôle via application mobile & télécommande.
+              {t.hero.subtitle}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-8">
@@ -41,7 +44,7 @@ export default function Hero() {
                 onClick={handleContactClick}
                 className="btn btn-primary text-lg group"
               >
-                Demander un Devis
+                {t.hero.cta}
                 <span className="inline-block ml-2 transition-transform group-hover:translate-x-2">
                   →
                 </span>
@@ -52,7 +55,7 @@ export default function Hero() {
                 className="btn bg-white text-primary hover:bg-gray-100 text-lg"
               >
                 <span className="mr-2">📞</span>
-                Appelez-nous
+                {t.hero.callUs}
               </a>
             </div>
 
@@ -64,7 +67,7 @@ export default function Hero() {
                 </div>
                 <div className="min-w-0">
                   <div className="font-bold text-base lg:text-lg text-secondary">12 000 V</div>
-                  <div className="text-xs lg:text-sm text-gray-300">Puissance max</div>
+                  <div className="text-xs lg:text-sm text-gray-300">{t.hero.power}</div>
                 </div>
               </div>
 
@@ -73,8 +76,8 @@ export default function Hero() {
                   <span className="text-2xl lg:text-3xl">📱</span>
                 </div>
                 <div className="min-w-0">
-                  <div className="font-bold text-base lg:text-lg text-secondary">Contrôle</div>
-                  <div className="text-xs lg:text-sm text-gray-300">App mobile</div>
+                  <div className="font-bold text-base lg:text-lg text-secondary">{t.hero.control}</div>
+                  <div className="text-xs lg:text-sm text-gray-300">{t.hero.mobileApp}</div>
                 </div>
               </div>
 
@@ -83,9 +86,9 @@ export default function Hero() {
                   <span className="text-2xl lg:text-3xl">🔋</span>
                 </div>
                 <div className="min-w-0 flex-1">
-                  <div className="font-bold text-base lg:text-lg text-secondary">3 modes</div>
+                  <div className="font-bold text-base lg:text-lg text-secondary">{t.hero.modes}</div>
                   <div className="text-xs lg:text-sm text-gray-300 leading-tight">
-                    Secteur / Batterie / Solaire
+                    {t.hero.modesDesc}
                   </div>
                 </div>
               </div>
@@ -119,21 +122,21 @@ export default function Hero() {
                     </svg>
                   </div>
                   <div className="text-white text-xl font-bold mb-2">
-                    Protection Maximale
+                    {t.hero.maxProtection}
                   </div>
                   <div className="text-secondary text-sm font-semibold">
-                    Technologie TH-Steward WF
+                    {t.hero.technology}
                   </div>
                 </div>
               </div>
 
               {/* Badges flottants */}
               <div className="absolute -top-4 -right-4 bg-green-500 text-white px-5 py-3 rounded-2xl shadow-2xl animate-pulse-slow border-2 border-white/30">
-                <span className="font-bold text-sm">✓ Garantie 12 mois</span>
+                <span className="font-bold text-sm">{t.hero.warranty}</span>
               </div>
 
               <div className="absolute -bottom-4 -left-4 bg-gradient-to-r from-secondary to-secondary-dark text-primary px-5 py-3 rounded-2xl shadow-2xl border-2 border-white/30">
-                <span className="font-bold text-sm">🎓 Formation incluse</span>
+                <span className="font-bold text-sm">{t.hero.training}</span>
               </div>
             </div>
           </div>

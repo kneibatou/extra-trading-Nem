@@ -3,10 +3,13 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useLanguage } from '@/lib/LanguageContext';
+import LanguageSelector from './LanguageSelector';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,12 +20,12 @@ export default function Header() {
   }, []);
 
   const navItems = [
-    { name: 'Accueil', href: '#accueil' },
-    { name: 'Produit', href: '#produit' },
-    { name: 'Nos Packs', href: '#packs' },
-    { name: 'Réalisations', href: '#realisations' },
-    { name: 'Témoignages', href: '#temoignages' },
-    { name: 'Contact', href: '#contact' },
+    { name: t.nav.home, href: '#accueil' },
+    { name: t.nav.product, href: '#produit' },
+    { name: t.nav.packs, href: '#packs' },
+    { name: t.nav.gallery, href: '#realisations' },
+    { name: t.nav.testimonials, href: '#temoignages' },
+    { name: t.nav.contact, href: '#contact' },
   ];
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -65,7 +68,7 @@ export default function Header() {
           </Link>
 
           {/* Navigation Desktop */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center space-x-6">
             {navItems.map((item) => (
               <a
                 key={item.name}
@@ -77,42 +80,50 @@ export default function Header() {
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-secondary transition-all duration-300 group-hover:w-full"></span>
               </a>
             ))}
+            
+            {/* Language Selector */}
+            <LanguageSelector />
+            
             <a
               href="#contact"
               onClick={(e) => handleNavClick(e, '#contact')}
               className="btn btn-primary"
             >
-              Devis Gratuit
+              {t.nav.freeQuote}
             </a>
           </nav>
 
-          {/* Bouton Menu Mobile */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden text-primary focus:outline-none"
-            aria-label="Toggle menu"
-          >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+          {/* Mobile: Language + Menu Button */}
+          <div className="lg:hidden flex items-center space-x-3">
+            <LanguageSelector />
+            
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="text-primary focus:outline-none"
+              aria-label="Toggle menu"
             >
-              {isMobileMenuOpen ? (
-                <path d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
-          </button>
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                {isMobileMenuOpen ? (
+                  <path d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
+          </div>
         </div>
 
         {/* Menu Mobile */}
         {isMobileMenuOpen && (
-          <div className="md:hidden pb-6 animate-fade-in">
+          <div className="lg:hidden pb-6 animate-fade-in">
             <nav className="flex flex-col space-y-4">
               {navItems.map((item) => (
                 <a
@@ -129,7 +140,7 @@ export default function Header() {
                 onClick={(e) => handleNavClick(e, '#contact')}
                 className="btn btn-primary text-center"
               >
-                Devis Gratuit
+                {t.nav.freeQuote}
               </a>
             </nav>
           </div>

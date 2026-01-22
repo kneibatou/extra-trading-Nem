@@ -1,40 +1,35 @@
 'use client';
 
+import { useLanguage } from '@/lib/LanguageContext';
+
 export default function Features() {
+  const { t } = useLanguage();
+
   const features = [
     {
       icon: '⚡',
-      title: 'Électrificateur TH-Steward WF',
-      description: 'Jusqu\'à 12 000 V de puissance pour une protection maximale',
-      details: ['Haute performance', 'Fiabilité éprouvée', 'Technologie moderne'],
+      title: t.features.electrifier.title,
+      description: t.features.electrifier.description,
+      details: t.features.electrifier.details,
     },
     {
       icon: '📱',
-      title: 'Contrôle Intelligent',
-      description: 'Gérez votre système via application mobile & télécommande',
-      details: ['Application intuitive', 'Contrôle à distance', 'Notifications en temps réel'],
+      title: t.features.control.title,
+      description: t.features.control.description,
+      details: t.features.control.details,
     },
     {
       icon: '📊',
-      title: 'Écran LCD',
-      description: 'Surveillance complète : tension, alarme, niveau de batterie',
-      details: ['Interface claire', 'Alertes visuelles', 'Monitoring 24/7'],
+      title: t.features.lcd.title,
+      description: t.features.lcd.description,
+      details: t.features.lcd.details,
     },
     {
       icon: '🔋',
-      title: 'Triple Alimentation',
-      description: 'Fonctionne sur secteur, batterie ou panneau solaire',
-      details: ['Autonomie maximale', 'Solution écologique', 'Sans coupure'],
+      title: t.features.power.title,
+      description: t.features.power.description,
+      details: t.features.power.details,
     },
-  ];
-
-  const equipment = [
-    '6 fils en alliage d\'aluminium haute résistance',
-    'Poteaux en aluminium anodisé renforcés',
-    'Sirène 110 dB + panneaux de signalisation',
-    'Installation complète + formation utilisateur',
-    'Support technique disponible',
-    'Garantie 12 mois',
   ];
 
   return (
@@ -43,10 +38,10 @@ export default function Features() {
         {/* En-tête */}
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="section-title">
-            Un Système Complet et Intelligent
+            {t.features.title}
           </h2>
           <p className="section-subtitle">
-            Découvrez toutes les caractéristiques de notre solution de sécurité de pointe
+            {t.features.subtitle}
           </p>
         </div>
 
@@ -97,20 +92,19 @@ export default function Features() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <div className="inline-block bg-secondary/10 px-4 py-2 rounded-full mb-4">
-                <span className="text-secondary font-semibold">✨ Équipements Premium</span>
+                <span className="text-secondary font-semibold">{t.features.premiumEquipment}</span>
               </div>
               
               <h3 className="text-3xl font-bold text-primary mb-6">
-                Installation Complète Clé en Main
+                {t.features.turnkey}
               </h3>
               
               <p className="text-gray-600 mb-8">
-                Nous fournissons tout le matériel nécessaire pour une installation professionnelle
-                et sécurisée de votre système de clôture électrique.
+                {t.features.turnkeyDesc}
               </p>
 
               <ul className="space-y-4">
-                {equipment.map((item, index) => (
+                {t.features.equipment.map((item, index) => (
                   <li key={index} className="flex items-start">
                     <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center mr-3 flex-shrink-0 mt-0.5">
                       <svg
@@ -135,28 +129,27 @@ export default function Features() {
               <div className="bg-gradient-to-br from-primary to-primary-light rounded-2xl p-8 text-white">
                 <div className="text-5xl mb-4">🛡️</div>
                 <h4 className="text-2xl font-bold mb-4">
-                  Sécurité Garantie
+                  {t.features.guaranteedSecurity}
                 </h4>
                 <p className="mb-6 text-gray-200">
-                  Notre système de clôture électrique offre une protection 24/7 contre les intrusions
-                  avec une fiabilité éprouvée.
+                  {t.features.guaranteedSecurityDesc}
                 </p>
                 
                 <div className="grid grid-cols-2 gap-4">
                   <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
                     <div className="text-3xl font-bold text-secondary">110</div>
-                    <div className="text-sm text-gray-200">dB Sirène</div>
+                    <div className="text-sm text-gray-200">{t.features.sirenDb}</div>
                   </div>
                   <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
                     <div className="text-3xl font-bold text-secondary">24/7</div>
-                    <div className="text-sm text-gray-200">Surveillance</div>
+                    <div className="text-sm text-gray-200">{t.features.surveillance}</div>
                   </div>
                 </div>
               </div>
 
               {/* Badge flottant */}
               <div className="absolute -top-4 -right-4 bg-secondary text-white px-6 py-3 rounded-full shadow-lg font-bold">
-                Made in Mauritanie 🇲🇷
+                {t.features.madeIn}
               </div>
             </div>
           </div>

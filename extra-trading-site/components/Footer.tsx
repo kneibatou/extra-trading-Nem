@@ -1,13 +1,31 @@
 'use client';
 
 import Image from 'next/image';
+import { useLanguage } from '@/lib/LanguageContext';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const { t } = useLanguage();
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  const navItems = [
+    { name: t.nav.home, href: '#accueil' },
+    { name: t.nav.product, href: '#produit' },
+    { name: t.nav.packs, href: '#packs' },
+    { name: t.nav.gallery, href: '#realisations' },
+    { name: t.nav.testimonials, href: '#temoignages' },
+    { name: t.nav.contact, href: '#contact' },
+  ];
+
+  const packs = [
+    t.packs.residential.name,
+    t.packs.enterprise.name,
+    t.packs.solar.name,
+    t.packs.institutional.name,
+  ];
 
   return (
     <footer className="bg-primary text-white">
@@ -33,7 +51,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-gray-300 text-sm mb-4">
-              Votre partenaire de confiance pour les systèmes de clôture électrique intelligente en Mauritanie.
+              {t.footer.about}
             </p>
             <div className="flex space-x-3">
               <a
@@ -109,16 +127,9 @@ export default function Footer() {
 
           {/* Liens rapides */}
           <div>
-            <h3 className="font-bold text-lg mb-4">Navigation</h3>
+            <h3 className="font-bold text-lg mb-4">{t.footer.navigation}</h3>
             <ul className="space-y-2">
-              {[
-                { name: 'Accueil', href: '#accueil' },
-                { name: 'Produit', href: '#produit' },
-                { name: 'Nos Packs', href: '#packs' },
-                { name: 'Réalisations', href: '#realisations' },
-                { name: 'Témoignages', href: '#temoignages' },
-                { name: 'Contact', href: '#contact' },
-              ].map((link) => (
+              {navItems.map((link) => (
                 <li key={link.name}>
                   <a
                     href={link.href}
@@ -140,14 +151,9 @@ export default function Footer() {
 
           {/* Nos Packs */}
           <div>
-            <h3 className="font-bold text-lg mb-4">Nos Packs</h3>
+            <h3 className="font-bold text-lg mb-4">{t.footer.ourPacks}</h3>
             <ul className="space-y-2">
-              {[
-                '🏠 Pack Résidentiel',
-                '🏭 Pack Entreprise',
-                '☀️ Pack Solaire',
-                '🏫 Pack Institutionnel',
-              ].map((pack, index) => (
+              {packs.map((pack, index) => (
                 <li key={index}>
                   <a
                     href="#packs"
@@ -169,7 +175,7 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="font-bold text-lg mb-4">Contactez-nous</h3>
+            <h3 className="font-bold text-lg mb-4">{t.footer.contactUs}</h3>
             <ul className="space-y-3 text-gray-300 text-sm">
               <li className="flex items-start">
                 <span className="mr-2">📞</span>
@@ -199,7 +205,7 @@ export default function Footer() {
               <li className="flex items-start">
                 <span className="mr-2">🕐</span>
                 <span>
-                  Lun - Sam : 8h00 - 18h00
+                  {t.footer.hours}
                 </span>
               </li>
             </ul>
@@ -210,7 +216,7 @@ export default function Footer() {
         <div className="border-t border-white/10 pt-8 mt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-gray-300 text-sm mb-4 md:mb-0">
-              © {currentYear} MauriFence. Tous droits réservés.
+              © {currentYear} MauriFence. {t.footer.rights}
             </div>
             <div className="flex items-center space-x-4 text-sm text-gray-300">
               {/* <span>Made with ❤️ in Mauritania 🇲🇷</span> */}
@@ -223,7 +229,7 @@ export default function Footer() {
       <button
         onClick={scrollToTop}
         className="fixed bottom-8 right-8 w-12 h-12 bg-secondary hover:bg-secondary-dark text-white rounded-full shadow-lg flex items-center justify-center transition-all hover:scale-110 z-40"
-        aria-label="Retour en haut"
+        aria-label={t.footer.backToTop}
       >
         <svg
           className="w-6 h-6"

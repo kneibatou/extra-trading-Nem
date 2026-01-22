@@ -1,60 +1,23 @@
 'use client';
 
 import { useState } from 'react';
+import { useLanguage } from '@/lib/LanguageContext';
 
 export default function Testimonials() {
-  const testimonials = [
-    {
-      name: 'Mohamed Ould Ahmed',
-      role: 'Directeur d\'usine',
-      company: 'Société Logistique MRT',
-      content: 'Depuis l\'installation du système MauriFence, nous n\'avons plus eu aucune intrusion dans notre dépôt. Le contrôle via l\'application mobile est très pratique et l\'équipe a été très professionnelle.',
-      rating: 5,
-      location: 'Nouakchott',
-    },
-    {
-      name: 'Aïcha Mint Sidi',
-      role: 'Propriétaire',
-      company: 'Villa Résidentielle',
-      content: 'Une excellente solution pour sécuriser ma maison. L\'installation a été rapide, propre et l\'équipe m\'a bien formée. Je me sens beaucoup plus en sécurité maintenant. Je recommande vivement !',
-      rating: 5,
-      location: 'Tevragh Zeina',
-    },
-    {
-      name: 'Jean-Paul Dubois',
-      role: 'Coordinateur',
-      company: 'ONG Internationale',
-      content: 'Nous avons équipé nos bureaux avec le Pack Institutionnel. Le système est fiable, autonome avec le solaire, et le support technique est réactif. Parfait pour nos besoins de sécurité 24/7.',
-      rating: 5,
-      location: 'Nouakchott',
-    },
-    {
-      name: 'Abdallah Ould Cheikh',
-      role: 'Gérant',
-      company: 'Ferme Agricole',
-      content: 'Le Pack Solaire est idéal pour notre ferme en zone rurale. Fini les vols de bétail ! Le système est autonome et ne nécessite aucun entretien particulier. Un investissement rentable.',
-      rating: 5,
-      location: 'Rosso',
-    },
-    {
-      name: 'Mariem Mint El Moctar',
-      role: 'Directrice',
-      company: 'Hôtel Le Sahara',
-      content: 'Nous avons fait confiance à MauriFence pour sécuriser notre établissement. Les clients se sentent en sécurité et le système s\'intègre parfaitement sans nuire à l\'esthétique de l\'hôtel.',
-      rating: 5,
-      location: 'Nouadhibou',
-    },
-    {
-      name: 'Ibrahim Ba',
-      role: 'Responsable Sécurité',
-      company: 'Centre Médical',
-      content: 'Installation professionnelle, matériel de qualité et formation complète pour notre équipe. Le système fonctionne parfaitement depuis 8 mois sans aucun problème. Très satisfait !',
-      rating: 5,
-      location: 'Nouakchott',
-    },
-  ];
-
+  const { t } = useLanguage();
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  const testimonials = t.testimonials.clients.map((client, index) => ({
+    ...client,
+    rating: 5,
+  }));
+
+  const stats = [
+    { number: '100+', label: t.testimonials.stats.installations },
+    { number: '98%', label: t.testimonials.stats.satisfaction },
+    { number: '24/7', label: t.testimonials.stats.support },
+    { number: '12', label: t.testimonials.stats.warranty },
+  ];
 
   const nextTestimonial = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
@@ -86,20 +49,15 @@ export default function Testimonials() {
       <div className="container">
         {/* En-tête */}
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="section-title">Ce Que Disent Nos Clients</h2>
+          <h2 className="section-title">{t.testimonials.title}</h2>
           <p className="section-subtitle">
-            Plus de 100 installations réussies en Mauritanie. Découvrez leurs témoignages
+            {t.testimonials.subtitle}
           </p>
         </div>
 
         {/* Statistiques */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-          {[
-            { number: '100+', label: 'Installations' },
-            { number: '98%', label: 'Satisfaction' },
-            { number: '24/7', label: 'Support' },
-            { number: '12', label: 'Mois Garantie' },
-          ].map((stat, index) => (
+          {stats.map((stat, index) => (
             <div
               key={index}
               className="bg-white rounded-xl shadow-lg p-6 text-center transform hover:scale-105 transition-transform"
@@ -149,7 +107,7 @@ export default function Testimonials() {
               <button
                 onClick={prevTestimonial}
                 className="w-12 h-12 bg-gray-100 hover:bg-secondary hover:text-white rounded-full flex items-center justify-center transition-colors"
-                aria-label="Témoignage précédent"
+                aria-label={t.testimonials.previous}
               >
                 <svg
                   className="w-6 h-6"
@@ -177,7 +135,7 @@ export default function Testimonials() {
                         ? 'bg-secondary w-8'
                         : 'bg-gray-300 hover:bg-gray-400'
                     }`}
-                    aria-label={`Aller au témoignage ${index + 1}`}
+                    aria-label={`${t.testimonials.goTo} ${index + 1}`}
                   />
                 ))}
               </div>
@@ -185,7 +143,7 @@ export default function Testimonials() {
               <button
                 onClick={nextTestimonial}
                 className="w-12 h-12 bg-gray-100 hover:bg-secondary hover:text-white rounded-full flex items-center justify-center transition-colors"
-                aria-label="Témoignage suivant"
+                aria-label={t.testimonials.next}
               >
                 <svg
                   className="w-6 h-6"
@@ -208,10 +166,10 @@ export default function Testimonials() {
         {/* CTA */}
         <div className="text-center mt-12">
           <p className="text-lg text-gray-600 mb-6">
-            Rejoignez nos clients satisfaits
+            {t.testimonials.joinClients}
           </p>
           <a href="#contact" className="btn btn-primary text-lg">
-            Demander Mon Devis Gratuit
+            {t.testimonials.getQuote}
           </a>
         </div>
       </div>

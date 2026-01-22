@@ -1,8 +1,10 @@
 'use client';
 
 import { useState } from 'react';
+import { useLanguage } from '@/lib/LanguageContext';
 
 export default function Contact() {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -23,18 +25,18 @@ export default function Contact() {
     
     // Formatage du message WhatsApp
     const whatsappMessage = `
-🌟 *Nouvelle Demande de Devis*
+${t.contact.whatsapp.newRequest}
 
-👤 *Nom:* ${formData.name}
-📱 *Téléphone:* ${formData.phone}
-📧 *Email:* ${formData.email}
-📦 *Pack:* ${formData.pack || 'Non spécifié'}
+${t.contact.whatsapp.name} ${formData.name}
+${t.contact.whatsapp.phone} ${formData.phone}
+${t.contact.whatsapp.email} ${formData.email}
+${t.contact.whatsapp.pack} ${formData.pack || t.contact.whatsapp.notSpecified}
 
-💬 *Message:*
+${t.contact.whatsapp.message}
 ${formData.message}
 
 ---
-      Via Site Web MauriFence
+${t.contact.whatsapp.via}
     `.trim();
 
     // Encodage pour URL
@@ -59,9 +61,9 @@ ${formData.message}
       <div className="container">
         {/* En-tête */}
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="section-title">Demandez Votre Devis Gratuit</h2>
+          <h2 className="section-title">{t.contact.title}</h2>
           <p className="section-subtitle">
-            Remplissez le formulaire et nous vous recontacterons dans les 24h
+            {t.contact.subtitle}
           </p>
         </div>
 
@@ -72,7 +74,7 @@ ${formData.message}
               {/* Nom */}
               <div>
                 <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2">
-                  Nom complet *
+                  {t.contact.form.fullName}
                 </label>
                 <input
                   type="text"
@@ -82,14 +84,14 @@ ${formData.message}
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition"
-                  placeholder="Mohamed Ould Ahmed"
+                  placeholder={t.contact.form.namePlaceholder}
                 />
               </div>
 
               {/* Téléphone */}
               <div>
                 <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 mb-2">
-                  Numéro de téléphone *
+                  {t.contact.form.phone}
                 </label>
                 <input
                   type="tel"
@@ -99,14 +101,14 @@ ${formData.message}
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition"
-                  placeholder="+222 XX XX XX XX"
+                  placeholder={t.contact.form.phonePlaceholder}
                 />
               </div>
 
               {/* Email */}
               <div>
                 <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
-                  Email
+                  {t.contact.form.email}
                 </label>
                 <input
                   type="email"
@@ -115,14 +117,14 @@ ${formData.message}
                   value={formData.email}
                   onChange={handleChange}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition"
-                  placeholder="votre@email.com"
+                  placeholder={t.contact.form.emailPlaceholder}
                 />
               </div>
 
               {/* Pack */}
               <div>
                 <label htmlFor="pack" className="block text-sm font-semibold text-gray-700 mb-2">
-                  Pack qui vous intéresse
+                  {t.contact.form.pack}
                 </label>
                 <select
                   id="pack"
@@ -131,19 +133,19 @@ ${formData.message}
                   onChange={handleChange}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition bg-white"
                 >
-                  <option value="">Sélectionnez un pack</option>
-                  <option value="Pack Résidentiel">🏠 Pack Résidentiel</option>
-                  <option value="Pack Entreprise">🏭 Pack Entreprise</option>
-                  <option value="Pack Solaire">☀️ Pack Solaire</option>
-                  <option value="Pack Institutionnel">🏫 Pack Institutionnel</option>
-                  <option value="Solution sur mesure">⚙️ Solution sur mesure</option>
+                  <option value="">{t.contact.form.selectPack}</option>
+                  <option value="Pack Résidentiel">{t.contact.form.residentialPack}</option>
+                  <option value="Pack Entreprise">{t.contact.form.enterprisePack}</option>
+                  <option value="Pack Solaire">{t.contact.form.solarPack}</option>
+                  <option value="Pack Institutionnel">{t.contact.form.institutionalPack}</option>
+                  <option value="Solution sur mesure">{t.contact.form.customSolution}</option>
                 </select>
               </div>
 
               {/* Message */}
               <div>
                 <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-2">
-                  Votre message *
+                  {t.contact.form.message}
                 </label>
                 <textarea
                   id="message"
@@ -153,21 +155,20 @@ ${formData.message}
                   required
                   rows={5}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition resize-none"
-                  placeholder="Décrivez votre projet, la surface à protéger, vos besoins spécifiques..."
+                  placeholder={t.contact.form.messagePlaceholder}
                 />
               </div>
 
               {/* Bouton Submit */}
               <button type="submit" className="btn btn-primary w-full text-lg group">
-                <span className="mr-2">💬</span>
-                Envoyer via WhatsApp
+                {t.contact.form.submit}
                 <span className="inline-block ml-2 transition-transform group-hover:translate-x-2">
                   →
                 </span>
               </button>
 
               <p className="text-sm text-gray-500 text-center">
-                * Champs obligatoires. Vos données sont sécurisées et ne seront jamais partagées.
+                {t.contact.form.required}
               </p>
             </form>
           </div>
@@ -176,7 +177,7 @@ ${formData.message}
           <div className="space-y-8">
             {/* Carte d'information principale */}
             <div className="bg-gradient-to-br from-primary to-primary-light rounded-2xl p-8 text-white">
-              <h3 className="text-2xl font-bold mb-6">Contactez-nous Directement</h3>
+              <h3 className="text-2xl font-bold mb-6">{t.contact.info.contactUs}</h3>
               
               <div className="space-y-6">
                 {/* Téléphone */}
@@ -185,7 +186,7 @@ ${formData.message}
                     <span className="text-2xl">📞</span>
                   </div>
                   <div>
-                    <div className="font-semibold mb-1">Téléphone</div>
+                    <div className="font-semibold mb-1">{t.contact.info.phone}</div>
                     <a
                       href="tel:+22246147263"
                       className="text-white/90 hover:text-secondary transition-colors text-lg"
@@ -201,7 +202,7 @@ ${formData.message}
                     <span className="text-2xl">📧</span>
                   </div>
                   <div>
-                    <div className="font-semibold mb-1">Email</div>
+                    <div className="font-semibold mb-1">{t.contact.info.email}</div>
                     <a
                       href="mailto:contact@maurifence.com"
                       className="text-white/90 hover:text-secondary transition-colors"
@@ -217,7 +218,7 @@ ${formData.message}
                     <span className="text-2xl">📍</span>
                   </div>
                   <div>
-                    <div className="font-semibold mb-1">Adresse</div>
+                    <div className="font-semibold mb-1">{t.contact.info.address}</div>
                     <div className="text-white/90">
                       Tevragh Zeina E-Nord<br />
                       N°222 - Nouakchott<br />
@@ -232,10 +233,10 @@ ${formData.message}
                     <span className="text-2xl">🕐</span>
                   </div>
                   <div>
-                    <div className="font-semibold mb-1">Horaires</div>
+                    <div className="font-semibold mb-1">{t.contact.info.hours}</div>
                     <div className="text-white/90">
-                      Lundi - Samedi<br />
-                      8h00 - 18h00
+                      {t.contact.info.hoursValue}<br />
+                      {t.contact.info.hoursTime}
                     </div>
                   </div>
                 </div>
@@ -245,17 +246,10 @@ ${formData.message}
             {/* Avantages */}
             <div className="bg-white rounded-2xl shadow-lg p-8">
               <h4 className="text-xl font-bold text-primary mb-6">
-                Pourquoi Nous Choisir ?
+                {t.contact.whyUs.title}
               </h4>
               <ul className="space-y-4">
-                {[
-                  'Devis gratuit sous 24h',
-                  'Installation professionnelle',
-                  'Formation complète incluse',
-                  'Garantie 12 mois',
-                  'Support technique disponible',
-                  'Prix compétitifs',
-                ].map((item, index) => (
+                {t.contact.whyUs.reasons.map((item, index) => (
                   <li key={index} className="flex items-center">
                     <svg
                       className="w-6 h-6 text-green-500 mr-3 flex-shrink-0"
@@ -277,9 +271,9 @@ ${formData.message}
             {/* Badge de confiance */}
             <div className="bg-secondary rounded-2xl p-6 text-center text-white">
               <div className="text-4xl mb-3">🏆</div>
-              <div className="font-bold text-2xl mb-2">100+ Clients Satisfaits</div>
+              <div className="font-bold text-2xl mb-2">{t.contact.trust.title}</div>
               <div className="text-white/90">
-                Plus de 100 installations réussies en Mauritanie
+                {t.contact.trust.subtitle}
               </div>
             </div>
           </div>
