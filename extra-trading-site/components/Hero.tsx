@@ -1,6 +1,7 @@
 'use client';
 
 import { useLanguage } from '@/lib/LanguageContext';
+import { NumberDisplay } from './NumberDisplay';
 
 export default function Hero() {
   const { t } = useLanguage();
@@ -55,7 +56,7 @@ export default function Hero() {
                 className="btn bg-white text-primary hover:bg-gray-100 text-lg"
               >
                 <span className="mr-2">📞</span>
-                {t.hero.callUs}
+                <NumberDisplay>+222 46 14 72 63</NumberDisplay>
               </a>
             </div>
 

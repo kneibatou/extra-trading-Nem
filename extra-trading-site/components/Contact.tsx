@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useLanguage } from '@/lib/LanguageContext';
+import { NumberDisplay } from './NumberDisplay';
 
 export default function Contact() {
   const { t } = useLanguage();
@@ -191,7 +192,7 @@ ${t.contact.whatsapp.via}
                       href="tel:+22246147263"
                       className="text-white/90 hover:text-secondary transition-colors text-lg"
                     >
-                      +222 46 14 72 63
+                      <NumberDisplay>+222 46 14 72 63</NumberDisplay>
                     </a>
                   </div>
                 </div>

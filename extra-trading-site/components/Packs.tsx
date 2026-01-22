@@ -1,6 +1,7 @@
 'use client';
 
 import { useLanguage } from '@/lib/LanguageContext';
+import { NumberDisplay } from './NumberDisplay';
 
 export default function Packs() {
   const { t } = useLanguage();
@@ -155,7 +156,7 @@ export default function Packs() {
             </button>
             <a href="tel:+22246147263" className="btn bg-white text-primary hover:bg-gray-100">
               <span className="mr-2">📞</span>
-              +222 46 14 72 63
+              <NumberDisplay>+222 46 14 72 63</NumberDisplay>
             </a>
           </div>
         </div>

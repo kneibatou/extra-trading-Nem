@@ -83,6 +83,12 @@
     display: inline-block;
   }
 
+  /* Force LTR pour les liens avec numéros de téléphone */
+  [dir='rtl'] a[href^="tel:"] {
+    direction: ltr;
+    unicode-bidi: embed;
+  }
+
   [dir='rtl'] .space-x-2 > * + * {
     margin-left: 0;
     margin-right: 0.5rem;

@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { useLanguage } from '@/lib/LanguageContext';
+import { NumberDisplay } from './NumberDisplay';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -183,7 +184,7 @@ export default function Footer() {
                   href="tel:+22246147263"
                   className="hover:text-secondary transition-colors"
                 >
-                  +222 46 14 72 63
+                  <NumberDisplay>+222 46 14 72 63</NumberDisplay>
                 </a>
               </li>
               <li className="flex items-start">
